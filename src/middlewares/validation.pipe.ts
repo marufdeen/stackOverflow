@@ -14,7 +14,7 @@ export const useValidatorPipe = (formType: string, source?: 'query' | 'params') 
       req.body = value;
       next();
     } catch (error) {
-      return res.status(HttpStatusCode.BAD_REQUEST).json(makeResponse(null, HttpStatusCode.BAD_REQUEST, error.message));
+      return res.status(HttpStatusCode.VALIDATION_ERROR).json(makeResponse(null, HttpStatusCode.VALIDATION_ERROR, error.message));
     }
   };
 };

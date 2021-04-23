@@ -23,6 +23,7 @@ export interface IUserDTO extends ILoginDTO {
 export interface IUserModel extends Model<IUserDTO>, IUserDTO {
   comparePassword: (password: string, Customer: IUserModel) => Promise<boolean>;
   associate: (model: any) => void;
+  dataValues: IUserDTO
 }
 
 export type IUserRepository = typeof Model &

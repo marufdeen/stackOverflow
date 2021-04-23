@@ -7,12 +7,12 @@ import { VOTE_TYPE } from '../constants/constants';
  */
 export const Schema: { [key: string]: Joi.ObjectSchema<any> } = {
   event: Joi.object({}),
-  REGISTER_USER: Joi.object({
+  REGISTER: Joi.object({
     email: Joi.string().email({ minDomainSegments: 2 }),
     username: Joi.string().alphanum().min(3).max(30).required(),
     password: Joi.string().min(8).max(15).pattern(new RegExp('^[a-zA-Z0-9]{3,30}$')),
   }).required(),
-  login: Joi.object({
+  LOGIN: Joi.object({
     email: Joi.string().email({ minDomainSegments: 2 }),
     password: Joi.string().pattern(new RegExp('^[a-zA-Z0-9]{3,30}$')),
   }).required(),

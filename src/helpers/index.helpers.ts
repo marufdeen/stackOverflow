@@ -14,3 +14,13 @@ const secret: string = envManager.getEnvValue('JWT_KEY');
  */
 export const generateToken = (time: string, payload: IJWTPayload) =>
   `Bearer ${JWT.sign(payload, secret, { expiresIn: time })}`;
+
+  export const pick = <T>(props: any[], obj: object): T => {
+    let result: any = {};
+    props.forEach((prop) =>
+      Array.isArray(prop)
+        ? (result[prop[1] as keyof typeof result] = obj[prop[0] as keyof typeof obj])
+        : (result[prop as keyof typeof result] = obj[prop as keyof typeof obj]),
+    );
+    return result;
+  };

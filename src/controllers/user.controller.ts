@@ -13,7 +13,7 @@ export class UserController extends UserServices {
    * @param {object} res Response object
    * @returns {object} Json data
    */
-  protected registerUserAsync = async (req: Request, res: Response): Promise<unknown> => {
+  protected registerUserAsync = async (req: Request, res: Response): Promise<any> => {
     const data = await this.registerUserServiceAsync(req.body);
     return res.status(data.statusCode).json(data);
   }

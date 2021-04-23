@@ -12,8 +12,8 @@ class UserRoutes extends UserController {
   }
 
   private routes = () => {
-    this.router.post('/register', useValidatorPipe('REGISTER_USER'), this.registerUserAsync);
-    this.router.post('/login', useValidatorPipe('login'), this.loginAsync);
+    this.router.post('/register', useValidatorPipe('REGISTER'), this.registerUserAsync);
+    this.router.post('/login', useValidatorPipe('LOGIN'), this.loginAsync);
   };
 }
 export default new UserRoutes();
