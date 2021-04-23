@@ -19,6 +19,23 @@ const index_helpers_1 = require("../helpers/index.helpers");
 const User = index_1.default.User;
 class UserServices {
     constructor() {
+        this.registerUserServiceAsync = (registerDTO) => __awaiter(this, void 0, void 0, function* () {
+            try {
+                const user_data = yield User.findOne({ where: { email: registerDTO.email } });
+                if (user_data) {
+                    return baseResponse_1.makeResponse(null, constants_1.HttpStatusCode.CONFLICT, 'Email already exist');
+                }
+                const new_user_data = yield User.create(registerDTO);
+                new_user_data.dataValues.token = index_helpers_1.generateToken(constants_1.USER_TOKEN_EXPIRE_TIME, {
+                    id: new_user_data.id
+                });
+                ;
+                return baseResponse_1.makeResponse(new_user_data, constants_1.HttpStatusCode.OK);
+            }
+            catch (error) {
+                return baseResponse_1.makeResponse(null, constants_1.HttpStatusCode.INTERNAL_ERROR, error.message);
+            }
+        });
         this.loginUserServiceAsync = (loginDTO) => __awaiter(this, void 0, void 0, function* () {
             try {
                 const user = yield User.findOne({
@@ -35,22 +52,6 @@ class UserServices {
                     id: user.id
                 });
                 return baseResponse_1.makeResponse(user);
-            }
-            catch (error) {
-                return baseResponse_1.makeResponse(null, constants_1.HttpStatusCode.INTERNAL_ERROR, error.message);
-            }
-        });
-        this.registerUserServiceAsync = (registerDTO) => __awaiter(this, void 0, void 0, function* () {
-            try {
-                const user_data = yield User.findOne({ where: { email: registerDTO.email } });
-                if (user_data) {
-                    return baseResponse_1.makeResponse(null, constants_1.HttpStatusCode.CONFLICT, 'Email already exist');
-                }
-                const new_user_data = yield User.create(registerDTO);
-                new_user_data.token = index_helpers_1.generateToken(constants_1.USER_TOKEN_EXPIRE_TIME, {
-                    id: new_user_data.id
-                });
-                return baseResponse_1.makeResponse(new_user_data, constants_1.HttpStatusCode.OK);
             }
             catch (error) {
                 return baseResponse_1.makeResponse(null, constants_1.HttpStatusCode.INTERNAL_ERROR, error.message);
