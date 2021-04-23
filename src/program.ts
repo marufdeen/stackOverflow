@@ -6,9 +6,11 @@ export class Program extends Startup {
     super(express());
 
     this.buildConfigurations();
+    this.Run()
   }
 
-  buildConfigurations() {
+  private buildConfigurations() {
+    
     this.useApplicationMiddlewares();
 
     this.setGlobalRoutesPrefix('/api');
@@ -18,9 +20,9 @@ export class Program extends Startup {
     this.catchUnknownRoutes(); 
   }
 
-  public Run(): void {
+  private Run(): void {
     this.initialize();
   }
 }
 
-new Program().Run();
+new Program()

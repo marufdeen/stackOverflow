@@ -7,14 +7,14 @@ import morgan from 'morgan';
 import { envManager } from './config/envManager';
 import { HttpStatusCode } from './constants/constants';
 import { makeResponse } from './contracts/baseResponse'; 
-import Routes from './routes/index'; 
+import routes from './routes/index'; 
 /**
  * @desc Start Express server.
  * @class Serverup
  * @returns void
  */
 export class Startup {
-  private readonly app_start: number;
+  private readonly unix_timeStamp: number;
   private readonly port: number;
 
   constructor(private app: express.Application) {
@@ -22,7 +22,7 @@ export class Startup {
 
     this.port = envManager.getApplicationPort();
 
-    this.app_start = moment().unix();
+    this.unix_timeStamp = moment().unix();
   }
 
   protected useApplicationMiddlewares = (): void => {
@@ -43,7 +43,7 @@ export class Startup {
    * @returns {*} void
    */
   protected setGlobalRoutesPrefix(prefix: string) {
-    this.app.use(prefix, Routes.router);
+    this.app.use(prefix, routes.router);
   }
 
   /**
@@ -52,7 +52,7 @@ export class Startup {
   protected setTestApplicationRoutes() {
     const details = {
       message: 'stackOverflow is up and running',
-      app_start: this.app_start,
+      unix_timeStamp: this.unix_timeStamp,
     };
     this.app.get(
       '/',
@@ -66,8 +66,8 @@ export class Startup {
         res.status(HttpStatusCode.OK).json(
           makeResponse(
             {
-              message: ` is up and running on ${req.hostname}`,
-              app_start: this.app_start,
+              message: `stackOverflow is up and running on ${req.hostname}`,
+              unix_timeStamp: this.unix_timeStamp,
               path: req.originalUrl,
             },
             HttpStatusCode.OK,
@@ -81,11 +81,11 @@ export class Startup {
 
     const env = envManager.getEnvValue('APP_ENV');
 
-    if (env === 'production') console.info('App is running on %s mode', env);
-    else console.info(message, this.port, env);
+    if (env === 'production') console.log('App is running on %s mode', env);
+    else console.log(message, this.port, env);
 
     this.app.listen(this.port, () => {
-      console.info('  *Press CTRL + C to stop*');
+      console.log('  *Press CTRL + C to stop*');
     });
   };
 
@@ -100,12 +100,4 @@ export class Startup {
     );
   };
 
- 
-}
-declare global {
-  namespace Express {
-    interface Request {
-      user: any;
-    }
-  }
 }

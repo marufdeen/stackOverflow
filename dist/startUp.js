@@ -36,11 +36,11 @@ class Startup {
             const message = '  App is running at http://localhost:%d in %s mode';
             const env = envManager_1.envManager.getEnvValue('APP_ENV');
             if (env === 'production')
-                console.info('App is running on %s mode', env);
+                console.log('App is running on %s mode', env);
             else
-                console.info(message, this.port, env);
+                console.log(message, this.port, env);
             this.app.listen(this.port, () => {
-                console.info('  *Press CTRL + C to stop*');
+                console.log('  *Press CTRL + C to stop*');
             });
         };
         this.catchUnknownRoutes = () => {
@@ -52,7 +52,7 @@ class Startup {
         };
         this.app = app;
         this.port = envManager_1.envManager.getApplicationPort();
-        this.app_start = moment_1.default().unix();
+        this.unix_timeStamp = moment_1.default().unix();
     }
     setGlobalRoutesPrefix(prefix) {
         this.app.use(prefix, index_1.default.router);
@@ -60,13 +60,13 @@ class Startup {
     setTestApplicationRoutes() {
         const details = {
             message: 'stackOverflow is up and running',
-            app_start: this.app_start,
+            unix_timeStamp: this.unix_timeStamp,
         };
         this.app.get('/', (_, res) => __awaiter(this, void 0, void 0, function* () { return res.status(constants_1.HttpStatusCode.OK).json(baseResponse_1.makeResponse(details, constants_1.HttpStatusCode.OK)); }));
         this.app.get('/api/v1', (req, res) => __awaiter(this, void 0, void 0, function* () {
             return res.status(constants_1.HttpStatusCode.OK).json(baseResponse_1.makeResponse({
-                message: ` is up and running on ${req.hostname}`,
-                app_start: this.app_start,
+                message: `stackOverflow is up and running on ${req.hostname}`,
+                unix_timeStamp: this.unix_timeStamp,
                 path: req.originalUrl,
             }, constants_1.HttpStatusCode.OK));
         }));

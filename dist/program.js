@@ -10,6 +10,7 @@ class Program extends startUp_1.Startup {
     constructor() {
         super(express_1.default());
         this.buildConfigurations();
+        this.Run();
     }
     buildConfigurations() {
         this.useApplicationMiddlewares();
@@ -22,5 +23,5 @@ class Program extends startUp_1.Startup {
     }
 }
 exports.Program = Program;
-new Program().Run();
+new Program();
 //# sourceMappingURL=program.js.map
