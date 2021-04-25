@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { Decoded } from '../repositories/IUser.repo';
-import VoteServices from '../services/vote.service';
+import VoteServices from '../services/voteService';
 
 /**
  * @class VoteController

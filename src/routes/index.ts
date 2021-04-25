@@ -1,8 +1,8 @@
 import { Router } from 'express';
-import UserRoutes from './user.routes';
-import QuestionRoutes from './question.routes';
-import ReplyRoutes from './reply.routes';
-import VoteRoutes from './vote.routes';
+import UserRoutes from './userRoutes';
+import QuestionRoutes from './questionRoutes';
+import ReplyRoutes from './replyRoutes';
+import VoteRoutes from './voteRoutes';
 
 class Routes {
   public readonly router: Router;

@@ -1,7 +1,7 @@
 import { Router } from 'express';
-import { ReplyController } from '../controllers/reply.controller';
-import { useValidatorPipe } from '../middlewares/validation.pipe';
-import { verifyToken } from '../middlewares/jwt.pipe';
+import { ReplyController } from '../controllers/replyController';
+import { useValidatorPipe } from '../middlewares/validationPipe';
+import { verifyToken } from '../middlewares/jwtPipe';
 
 class ReplyRoutes extends ReplyController {
   public readonly router: Router;

@@ -1,7 +1,7 @@
 import { Router } from 'express';
-import { VoteController } from '../controllers/vote.controller';
-import { useValidatorPipe } from '../middlewares/validation.pipe';
-import { verifyToken } from '../middlewares/jwt.pipe';
+import { VoteController } from '../controllers/voteController';
+import { useValidatorPipe } from '../middlewares/validationPipe';
+import { verifyToken } from '../middlewares/jwtPipe';
 
 class VoteRoutes extends VoteController {
   public readonly router: Router;

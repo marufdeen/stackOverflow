@@ -2,7 +2,7 @@ import db from '../models/index';
 import { BaseResponse, makeResponse } from '../contracts/baseResponse';
 import { HttpStatusCode, USER_TOKEN_EXPIRE_TIME } from '../constants/constants';
 import { IUserRepository, ILoginDTO, IUserDTO, IUserModel } from '../repositories/IUser.repo';
-import { generateToken, pick } from '../helpers/index.helpers';
+import { generateToken, pick } from '../helpers/indexHelpers';
 
 const User: IUserRepository = db.User;
 

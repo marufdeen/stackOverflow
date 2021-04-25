@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { Decoded } from '../repositories/IUser.repo';
-import ReplyServices from '../services/reply.service';
+import ReplyServices from '../services/replyService';
 
 /**
  * @class ReplyController

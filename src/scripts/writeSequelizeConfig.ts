@@ -1,6 +1,6 @@
 import fileWriter = require('fs');
 import path = require('path');
-import { sequelizeOrmManager } from '../config/sequelizeManger';
+import { sequelizeOrmManager } from '../config/sequelizeManager';
 
 
 class FileWriter {

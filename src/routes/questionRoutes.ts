@@ -1,7 +1,7 @@
 import { Router } from 'express';
-import { QuestionController } from '../controllers/question.controller';
-import { useValidatorPipe } from '../middlewares/validation.pipe';
-import { verifyToken } from '../middlewares/jwt.pipe';
+import { QuestionController } from '../controllers/questionController';
+import { useValidatorPipe } from '../middlewares/validationPipe';
+import { verifyToken } from '../middlewares/jwtPipe';
 
 class QuestionRoutes extends QuestionController {
   public readonly router: Router;

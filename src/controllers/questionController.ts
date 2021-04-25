@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { Decoded } from '../repositories/IUser.repo';
-import QuestionServices from '../services/question.service';
+import QuestionServices from '../services/questionService';
 
 /**
  * @class QuestionController

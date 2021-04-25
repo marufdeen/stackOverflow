@@ -1,6 +1,6 @@
 import { Router } from 'express';
-import { UserController } from '../controllers/user.controller';
-import { useValidatorPipe } from '../middlewares/validation.pipe';
+import { UserController } from '../controllers/userController';
+import { useValidatorPipe } from '../middlewares/validationPipe';
 
 class UserRoutes extends UserController {
   public readonly router: Router;
