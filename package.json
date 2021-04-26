@@ -24,7 +24,7 @@
     "watch-test": "yarn test -- --watchAll",
     "build-ts": "tsc",
     "watch-ts": "tsc -w",
-    "write:file": "ts-node src/scripts/write-sequelize-config.ts",
+    "write:file": "ts-node src/scripts/writeSequelizeConfig.ts",
     "scaffold": "npx sequelize-cli model:generate --name"
   },
   "author": "maruf",
@@ -67,3 +67,4 @@
     "supertest": "^6.1.3"
   }
 }
+
